@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# This script is in Unicode (UTF-8) encoding!
+
+##########  START OF SETTINGS  ###############
+
+# Your search word may use regular expressions and end with an asterisk -
+# e.g. term* will search for 'terminal', 'terminate' etc.
+QUERY=your_search_word
+
+DIR=directory_of_the_files_you_want_to_search
+
+GREPIUSDIR=directory_of_this_script
+
+# MAXNUM must be a positive number!
+MAXNUM=500
+
+# Type 'no' to disable file filtering!
+FILTER=no
+
+# Choose between Bulgarian (bg) and English (en).
+LANG=en
+
+# Display .pdf.txt files. Type 'yes' or 'no'.
+INDEX=no
+
+##########  END OF SETTINGS  ###############
+
+cd $GREPIUSDIR
+grep -E -c -r $QUERY $DIR/* > results.txt
+perl filelist.pl $QUERY $DIR $MAXNUM $FILTER $LANG $INDEX
+konqueror results.htm

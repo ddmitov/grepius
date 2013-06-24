@@ -1,0 +1,13 @@
+#!/bin/sh
+
+##########  END OF SETTINGS  ###############
+
+DIR=directory_of_the_pdf_files_you_want_to_convert
+
+GREPIUSDIR=directory_of_this_script
+
+##########  END OF SETTINGS  ###############
+
+cd $GREPIUSDIR
+ls -R $DIR/*.pdf > $GREPIUSDIR/pdflist.txt
+perl cnvpdf.pl $GREPIUSDIR/pdflist.txt
